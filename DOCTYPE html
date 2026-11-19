@@ -3,462 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مقر DXN الدار النعيم - المتجر والكتالوج الرسمي</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>مقر DXN الدار النعيم - المتجر الرسمي</title>
   <style>
-    body { font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif; background-color: #f6f8f6; color: #1b2e21; margin: 0; }
-    [dir="ltr"] body { font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif; }
-    .dxn-green { background-color: #2d6a3e; }
-    .dxn-green-hover:hover { background-color: #235431; }
-    .dxn-text-green { color: #2d6a3e; }
-    .dxn-border-green { border-color: #2d6a3e; }
-    .dxn-light-bg { background-color: #edf5ef; }
-    .card-shadow { box-shadow: 0 4px 20px -2px rgba(27, 46, 33, 0.06); }
-    .hero-gradient { background: linear-gradient(135deg, #f3f8f4 0%, #e1efe4 55%, #d3e7d8 100%); }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f5f2; }
-    ::-webkit-scrollbar-thumb { background: #b8cebe; border-radius: 99px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { background: white !important; }
-    }
-    @keyframes flagWave {
-      0%, 100% { transform: perspective(160px) rotateY(-10deg) skewY(1.5deg); }
-      25% { transform: perspective(160px) rotateY(8deg) skewY(-2deg); }
-      50% { transform: perspective(160px) rotateY(-12deg) skewY(2deg); }
-      75% { transform: perspective(160px) rotateY(10deg) skewY(-1.5deg); }
-    }
-    @keyframes flagShimmer {
-      0% { background-position: -150% 0; }
-      100% { background-position: 150% 0; }
-    }
-    .mauritania-flag-wrap {
-      display: inline-block;
-      transform-origin: right center;
-      animation: flagWave 2.8s ease-in-out infinite;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    [dir="ltr"] .mauritania-flag-wrap {
-      transform-origin: left center;
-    }
-    .mauritania-flag-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0) 70%);
-      background-size: 200% 100%;
-      animation: flagShimmer 2.8s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes tickerScrollRTL {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(50%); }
-    }
-    @keyframes tickerScrollLTR {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .product-ticker-track {
-      display: flex;
-      width: max-content;
-      animation: tickerScrollRTL 48s linear infinite;
-    }
-    [dir="ltr"] .product-ticker-track {
-      animation: tickerScrollLTR 48s linear infinite;
-    }
-    .product-ticker-container:hover .product-ticker-track {
-      animation-play-state: paused;
-    }
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif; }
+    body { margin: 0; background: #f4f7f5; color: #1b2e21; padding-bottom: 80px; }
+    header { background: #2d6a3e; color: white; padding: 15px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+    header h1 { margin: 0; font-size: 18px; }
+    header p { margin: 2px 0 0; font-size: 12px; color: #cde6d4; }
+    .cart-btn { background: #ffffff; color: #2d6a3e; border: none; padding: 8px 14px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; }
+    .hero { background: linear-gradient(135deg, #e3f1e7, #cde4d4); padding: 20px 15px; text-align: center; border-bottom: 1px solid #b8d4c0; }
+    .hero h2 { margin: 0 0 8px; font-size: 20px; color: #163820; }
+    .hero p { margin: 0 0 12px; font-size: 13px; color: #2f4f38; }
+    .reg-btn { display: inline-block; background: #2d6a3e; color: white; text-decoration: none; padding: 10px 18px; border-radius: 10px; font-weight: bold; font-size: 13px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 15px; }
+    .filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; }
+    .filter-btn { background: white; border: 1px solid #c5d9cb; padding: 8px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 13px; white-space: nowrap; }
+    .filter-btn.active { background: #2d6a3e; color: white; border-color: #2d6a3e; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+    .card { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #e2ece5; }
+    .card-top { padding: 15px; }
+    .badge { display: inline-block; background: #edf5ef; color: #2d6a3e; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
+    .card h3 { margin: 0 0 6px; font-size: 16px; color: #163820; }
+    .card p { margin: 0; font-size: 13px; color: #556b5c; line-height: 1.5; }
+    .card-bottom { padding: 12px 15px; background: #fafcfa; border-top: 1px solid #edf3ef; display: flex; justify-content: space-between; align-items: center; }
+    .price { font-size: 17px; font-weight: 900; color: #2d6a3e; }
+    .add-btn { background: #2d6a3e; color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .add-btn:active { transform: scale(0.96); }
+    
+    /* نافذة السلة */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; justify-content: center; align-items: flex-end; }
+    .modal.open { display: flex; }
+    .modal-box { background: white; width: 100%; max-width: 500px; max-height: 90vh; border-radius: 20px 20px 0 0; padding: 20px; overflow-y: auto; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f6f9f7; border-radius: 10px; margin-bottom: 8px; }
+    .qty-controls button { background: #2d6a3e; color: white; border: none; width: 26px; height: 26px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    input, select { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+    .wa-btn { width: 100%; background: #25D366; color: white; border: none; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
-<div id="app"></div>
+<header>
+  <div>
+    <h1>🌿 مقر DXN الدار النعيم 🇲🇷</h1>
+    <p>معشبة مجتمع الناجحين - المتجر الرسمي</p>
+  </div>
+  <button class="cart-btn" onclick="toggleCart(true)">🛒 السلة (<span id="cart-count">0</span>)</button>
+</header>
+
+<div class="hero">
+  <h2>منتجات DXN الطبيعية في موريتانيا</h2>
+  <p>الدفع متاح عبر: بنكيلي • سداد • مصرفي • نقداً</p>
+  <a href="https://www.dxn2uafrica.com/pws/820561799" target="_blank" class="reg-btn">✨ سجل عضويتك الآن (كود: 820561799)</a>
+</div>
+
+<div class="container">
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="products-grid"></div>
+</div>
+
+<!-- نافذة السلة -->
+<div class="modal" id="cart-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 style="margin:0">🛒 سلة المشتريات</h3>
+      <button onclick="toggleCart(false)" style="background:none;border:none;font-size:20px;cursor:pointer;">✕</button>
+    </div>
+    <div id="cart-items"></div>
+    <hr style="border:0;border-top:1px solid #eee;margin:15px 0;">
+    <input type="text" id="cust-name" placeholder="الاسم الكريم" />
+    <input type="tel" id="cust-phone" placeholder="رقم الهاتف" />
+    <input type="text" id="cust-city" value="نواكشوط - الدار النعيم" placeholder="الحي / المدينة" />
+    <select id="pay-method">
+      <option value="بنكيلي (Bankily)">الدفع عبر بنكيلي (Bankily)</option>
+      <option value="سداد (Sedad)">الدفع عبر سداد (Sedad)</option>
+      <option value="مصرفي (Masrifi)">الدفع عبر مصرفي (Masrifi)</option>
+      <option value="نقداً عند الاستلام">نقداً عند الاستلام</option>
+    </select>
+    <div style="display:flex;justify-content:space-between;font-weight:bold;font-size:18px;margin:10px 0;">
+      <span>الإجمالي:</span>
+      <span style="color:#2d6a3e"><span id="cart-total">0</span> أوقية</span>
+    </div>
+    <button class="wa-btn" onclick="sendOrder()">📲 إرسال الطلب عبر واتساب</button>
+  </div>
+</div>
 
 <script>
-// بيانات المنتجات والكتالوج (يمكنك تعديل الأسعار أو استبدال روابط الصور بصورك الخاصة)
-const STORE_CONFIG = {
-  storeName: "مقر DXN الدار النعيم",
-  subTitle: "معشبة مجتمع الناجحين - المتجر والكتالوج الرسمي",
-  whatsappNumber: "22248436080", // رقم الواتساب بصيغة دولية بدون +
-  displayPhone: "48436080 / 27760555",
-  memberId: "820561799",
-  registrationLink: "https://www.dxn2uafrica.com/pws/820561799",
-  currency: "أوقية",
-  paymentMethods: ["بنكيلي (Bankily)", "سداد (Sedad)", "مصرفي (Masrifi)", "الدفع عند الاستلام"]
-};
+  const WHATSAPP = "22248436080";
+  const PRODUCTS = [
+    { id: 1, name: "فطر الريشي (جانوديرما)", cat: "المكملات", price: 2450, desc: "ملك الأعشاب لتعزيز المناعة وطرد السموم." },
+    { id: 2, name: "طحالب السبيرولينا (120 حبة)", cat: "المكملات", price: 980, desc: "الغذاء السوبر الغني بالفيتامينات والبروتين." },
+    { id: 3, name: "فطر الكورديسيبس", cat: "المكملات", price: 2300, desc: "يدعم الطاقة والنشاط وصحة الجهاز التنفسي." },
+    { id: 4, name: "قهوة كورديسيبس 3 في 1", cat: "المشروبات", price: 650, desc: "قهوة صحية فاخرة بخلاصة فطر الكورديسيبس." },
+    { id: 5, name: "مشروب الكوكوزي (Cocozhi)", cat: "المشروبات", price: 700, desc: "كاكاو طبيعي بالجانوديرما مغذي للكبار والصغار." },
+    { id: 6, name: "معجون أسنان جانوزي", cat: "العناية", price: 320, desc: "خالي من الفلورايد، يحمي اللثة والأسنان." },
+    { id: 7, name: "صابون جانوزي الطبيعي", cat: "العناية", price: 220, desc: "غني بالجانوديرما وزيت النخيل لنضارة البشرة." },
+    { id: 8, name: "حلوى زي منت بالنعناع", cat: "المشروبات", price: 550, desc: "منعش للفم والحلق بخلاصة الجانوديرما." }
+  ];
 
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "فطر الريشي (جانوديرما) - Reishi Gano",
-    category: "المكملات الغذائية",
-    pv: "70 PV",
-    price: 2450,
-    desc: "ملك الأعشاب لتعزيز المناعة وتنقية الجسم من السموم.",
-    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 2,
-    name: "طحالب السبيرولينا - Spirulina (120 حبة)",
-    category: "المكملات الغذائية",
-    pv: "28 PV",
-    price: 980,
-    desc: "الغذاء السوبر المتكامل الغني بالبروتين والفيتامينات والمعادن.",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 3,
-    name: "فطر الكورديسيبس - Cordyceps",
-    category: "المكملات الغذائية",
-    pv: "65 PV",
-    price: 2300,
-    desc: "يدعم الطاقة والنشاط البدني وصحة الجهاز التنفسي.",
-    image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 4,
-    name: "قهوة كورديسيبس 3 في 1 - Cordyceps Coffee",
-    category: "المشروبات الصحية",
-    pv: "13 PV",
-    price: 650,
-    desc: "مزيج فاخر من القهوة سريعة الذوبان مع مستخلص فطر الكورديسيبس.",
-    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 5,
-    name: "مشروب الكوكوزي - Cocozhi",
-    category: "المشروبات الصحية",
-    pv: "14 PV",
-    price: 700,
-    desc: "كاكاو طبيعي فاخر مدعم بخلاصة الجانوديرما مثالي للأطفال والكبار.",
-    image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 6,
-    name: "معجون أسنان جانوزي - Ganozhi Toothpaste",
-    category: "العناية الشخصية",
-    pv: "6 PV",
-    price: 320,
-    desc: "خالي من الفلورايد والمواد الضارة، يحافظ على صحة اللثة والأسنان.",
-    image: "https://images.unsplash.com/photo-1559599101-f09722fb4948?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 7,
-    name: "صابون جانوزي الطبيعي - Ganozhi Soap",
-    category: "العناية الشخصية",
-    pv: "4 PV",
-    price: 220,
-    desc: "غني بخلاصة الجانوديرما وزيت النخيل لتنظيف البشرة وتنعيمها.",
-    image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: 8,
-    name: "حلوى زي منت بالنعناع - Zhi Mint Plus",
-    category: "المشروبات الصحية",
-    pv: "11 PV",
-    price: 550,
-    desc: "منعش للحلق والفم بخلاصة الجانوديرما والنعناع البارد.",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=400&q=80"
+  let cart = [];
+  let activeCat = "الكل";
+
+  function renderFilters() {
+    const cats = ["الكل", ...new Set(PRODUCTS.map(p => p.cat))];
+    document.getElementById("filters").innerHTML = cats.map(c => 
+      `<button class="filter-btn ${activeCat === c ? 'active' : ''}" onclick="setCat('${c}')">${c}</button>`
+    ).join("");
   }
-];
 
-// حالة التطبيق
-let state = {
-  cart: [],
-  selectedCategory: "الكل",
-  searchQuery: "",
-  isCartOpen: false,
-  customerName: "",
-  customerPhone: "",
-  customerCity: "نواكشوط - الدار النعيم",
-  paymentMethod: STORE_CONFIG.paymentMethods[0]
-};
+  function setCat(c) { activeCat = c; renderFilters(); renderProducts(); }
 
-// أيقونة العلم الموريتاني SVG
-const MAURITANIA_FLAG_SVG = `
-  <div class="mauritania-flag-wrap w-10 h-7 border border-green-900/20">
-    <svg viewBox="0 0 900 600" class="w-full h-full object-cover">
-      <rect width="900" height="600" fill="#D01C1F"/>
-      <rect y="120" width="900" height="360" fill="#00A95C"/>
-      <path d="M 315,240 A 135,135 0 0,0 585,240 A 145,145 0 0,1 315,240 Z" fill="#FFD700"/>
-      <polygon points="450,165 462,202 501,202 470,224 481,261 450,239 419,261 430,224 399,202 438,202" fill="#FFD700"/>
-    </svg>
-  </div>
-`;
-
-// إضافة منتج للسلة
-function addToCart(productId) {
-  const product = PRODUCTS.find(p => p.id === productId);
-  const existing = state.cart.find(item => item.id === productId);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    state.cart.push({ ...product, qty: 1 });
+  function renderProducts() {
+    const list = activeCat === "الكل" ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
+    document.getElementById("products-grid").innerHTML = list.map(p => `
+      <div class="card">
+        <div class="card-top">
+          <span class="badge">${p.cat}</span>
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+        </div>
+        <div class="card-bottom">
+          <span class="price">${p.price} أوقية</span>
+          <button class="add-btn" onclick="addToCart(${p.id})">+ أضف</button>
+        </div>
+      </div>
+    `).join("");
   }
-  render();
-}
 
-// تعديل الكمية
-function updateQty(productId, delta) {
-  const item = state.cart.find(i => i.id === productId);
-  if (!item) return;
-  item.qty += delta;
-  if (item.qty <= 0) {
-    state.cart = state.cart.filter(i => i.id !== productId);
+  function addToCart(id) {
+    const item = cart.find(i => i.id === id);
+    if (item) item.qty++;
+    else cart.push({ ...PRODUCTS.find(p => p.id === id), qty: 1 });
+    updateCartUI();
   }
-  render();
-}
 
-// إرسال الطلب عبر واتساب
-function checkoutWhatsApp() {
-  if (state.cart.length === 0) return alert("السلة فارغة! يرجى إضافة منتجات أولاً.");
-  
-  const total = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  let msg = `*طلب جديد من متجر ${STORE_CONFIG.storeName}* 🌿\n`;
-  msg += `────────────────────\n`;
-  if (state.customerName) msg += `👤 *الاسم:* ${state.customerName}\n`;
-  if (state.customerPhone) msg += `📱 *الهاتف:* ${state.customerPhone}\n`;
-  msg += `📍 *العنوان:* ${state.customerCity}\n`;
-  msg += `💳 *طريقة الدفع:* ${state.paymentMethod}\n`;
-  msg += `────────────────────\n`;
-  msg += `*المنتجات المطلوبة:*\n`;
-  
-  state.cart.forEach((item, idx) => {
-    msg += `${idx + 1}. ${item.name} (×${item.qty}) = ${item.price * item.qty} ${STORE_CONFIG.currency}\n`;
-  });
-  
-  msg += `────────────────────\n`;
-  msg += `💰 *المجموع الكلي:* ${total} ${STORE_CONFIG.currency}\n`;
-  msg += `🆔 كود العضوية المرجعي: ${STORE_CONFIG.memberId}`;
+  function changeQty(id, delta) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+    updateCartUI();
+  }
 
-  const url = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-  window.open(url, "_blank");
-}
-
-// دالة العرض الرئيسية
-function render() {
-  const categories = ["الكل", ...new Set(PRODUCTS.map(p => p.category))];
-  const filteredProducts = PRODUCTS.filter(p => {
-    const matchCat = state.selectedCategory === "الكل" || p.category === state.selectedCategory;
-    const matchSearch = p.name.toLowerCase().includes(state.searchQuery.toLowerCase()) || 
-                        p.desc.toLowerCase().includes(state.searchQuery.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
-  const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
-  const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-  document.getElementById("app").innerHTML = `
-    <!-- الشريط العلوي -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-green-900/10 no-print">
-      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-xl dxn-green text-white flex items-center justify-center font-black text-lg shadow-sm">
-            DXN
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <h1 class="font-extrabold text-base sm:text-lg text-gray-900 leading-tight">${STORE_CONFIG.storeName}</h1>
-              ${MAURITANIA_FLAG_SVG}
-            </div>
-            <p class="text-xs text-green-800 font-semibold">${STORE_CONFIG.subTitle}</p>
-          </div>
+  function updateCartUI() {
+    document.getElementById("cart-count").innerText = cart.reduce((s, i) => s + i.qty, 0);
+    document.getElementById("cart-total").innerText = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+    const container = document.getElementById("cart-items");
+    if (cart.length === 0) {
+      container.innerHTML = `<p style="text-align:center;color:#888;">السلة فارغة حالياً</p>`;
+      return;
+    }
+    container.innerHTML = cart.map(i => `
+      <div class="cart-item">
+        <div>
+          <strong>${i.name}</strong><br>
+          <small style="color:#2d6a3e">${i.price * i.qty} أوقية</small>
         </div>
-
-        <div class="flex items-center gap-2 sm:gap-3">
-          <button onclick="window.print()" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 text-xs font-bold transition">
-            🖨️ طباعة الكتالوج
-          </button>
-          <button onclick="state.isCartOpen = true; render();" class="relative dxn-green dxn-green-hover text-white px-4 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-sm transition">
-            <span>🛒 السلة</span>
-            <span class="bg-white text-green-900 text-xs font-black px-2 py-0.5 rounded-full">${totalItems}</span>
-          </button>
+        <div class="qty-controls">
+          <button onclick="changeQty(${i.id}, -1)">-</button>
+          <span style="margin:0 8px;font-weight:bold">${i.qty}</span>
+          <button onclick="changeQty(${i.id}, 1)">+</button>
         </div>
       </div>
+    `).join("");
+  }
 
-      <!-- شريط المنتجات المتحرك -->
-      <div class="product-ticker-container bg-green-900 text-white py-1.5 overflow-hidden text-xs font-semibold border-t border-green-800">
-        <div class="product-ticker-track gap-8 px-4">
-          ${[...PRODUCTS, ...PRODUCTS].map(p => `
-            <span class="inline-flex items-center gap-2 whitespace-nowrap">
-              <span class="text-amber-300">✦</span>
-              <span>${p.name}</span>
-              <span class="bg-green-800 px-2 py-0.5 rounded text-emerald-200">${p.price} ${STORE_CONFIG.currency}</span>
-            </span>
-          `).join("")}
-        </div>
-      </div>
-    </header>
+  function toggleCart(show) {
+    document.getElementById("cart-modal").classList.toggle("open", show);
+  }
 
-    <!-- القسم الترحيبي (Hero) -->
-    <section class="hero-gradient border-b border-green-900/10 py-8 sm:py-12 px-4">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="max-w-2xl space-y-3 text-center md:text-right">
-          <span class="inline-block bg-white/80 text-green-900 border border-green-700/20 px-3 py-1 rounded-full text-xs font-bold">
-            🌿 منتجات طبيعية 100% معتمدة في موريتانيا
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-black text-gray-900 leading-snug">
-            صحتك ثروتك.. اطلب منتجات <span class="dxn-text-green">DXN العالمية</span> الآن
-          </h2>
-          <p class="text-sm sm:text-base text-gray-700 font-medium">
-            نوفر لك جميع المكملات الغذائية، المشروبات الصحية، ومنتجات العناية الشخصية مع توصيل سريع والدفع عبر بنكيلي، سداد، ومصرفي.
-          </p>
-          <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3 no-print">
-            <a href="${STORE_CONFIG.registrationLink}" target="_blank" class="dxn-green dxn-green-hover text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow transition">
-              ✨ سجل عضويتك مجاناً (${STORE_CONFIG.memberId})
-            </a>
-            <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}" target="_blank" class="bg-white hover:bg-gray-50 text-green-900 border border-green-800/20 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm transition">
-              📞 تواصل واتساب: ${STORE_CONFIG.displayPhone}
-            </a>
-          </div>
-        </div>
+  function sendOrder() {
+    if (cart.length === 0) return alert("يرجى إضافة منتجات للسلة أولاً");
+    const name = document.getElementById("cust-name").value || "زبون";
+    const phone = document.getElementById("cust-phone").value || "غير محدد";
+    const city = document.getElementById("cust-city").value;
+    const pay = document.getElementById("pay-method").value;
+    const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
 
-        <!-- بطاقة معلومات الدفع السريع -->
-        <div class="bg-white/90 backdrop-blur p-5 rounded-2xl card-shadow border border-green-900/10 w-full md:w-80 space-y-3">
-          <h3 class="font-extrabold text-sm text-green-900 border-b pb-2">💳 وسائل الدفع المتاحة بالمقر</h3>
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold text-gray-700">
-            <div class="bg-emerald-50 p-2.5 rounded-xl text-center border border-emerald-200">بنكيلي Bankily</div>
-            <div class="bg-blue-50 p-2.5 rounded-xl text-center border border-blue-200">سداد Sedad</div>
-            <div class="bg-amber-50 p-2.5 rounded-xl text-center border border-amber-200">مصرفي Masrifi</div>
-            <div class="bg-gray-50 p-2.5 rounded-xl text-center border border-gray-200">نقداً بالمقر</div>
-          </div>
-          <p class="text-[11px] text-gray-500 text-center">📍 نواكشوط - الدار النعيم | مجتمع الناجحين</p>
-        </div>
-      </div>
-    </section>
+    let text = `*طلب جديد - مقر DXN الدار النعيم*\n`;
+    text += `الاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${city}\nالدفع: ${pay}\n---\n`;
+    cart.forEach(i => text += `• ${i.name} (×${i.qty}) = ${i.price * i.qty} أوقية\n`);
+    text += `---\n*الإجمالي: ${total} أوقية*`;
 
-    <!-- أدوات البحث والتصفية -->
-    <main class="max-w-7xl mx-auto w-full px-4 py-8 flex-1">
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6 no-print">
-        <!-- التصنيفات -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1">
-          ${categories.map(cat => `
-            <button onclick="state.selectedCategory = '${cat}'; render();" 
-              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition ${
-                state.selectedCategory === cat 
-                  ? 'dxn-green text-white shadow-sm' 
-                  : 'bg-white text-gray-700 hover:bg-green-50 border border-gray-200'
-              }">
-              ${cat}
-            </button>
-          `).join("")}
-        </div>
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank");
+  }
 
-        <!-- حقل البحث -->
-        <div class="relative w-full sm:w-72">
-          <input type="text" value="${state.searchQuery}" oninput="state.searchQuery = this.value; render();"
-            placeholder="ابحث عن منتج (ريشي، سبيرولينا...)" 
-            class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-green-700" />
-        </div>
-      </div>
-
-      <!-- شبكة المنتجات -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        ${filteredProducts.map(product => `
-          <div class="bg-white rounded-2xl overflow-hidden card-shadow border border-green-900/5 flex flex-col justify-between hover:-translate-y-1 transition duration-200">
-            <div>
-              <div class="relative h-48 bg-gray-100 overflow-hidden">
-                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" />
-                <span class="absolute top-2.5 right-2.5 bg-white/95 text-green-900 text-[11px] font-extrabold px-2.5 py-1 rounded-lg shadow-sm">
-                  ${product.category}
-                </span>
-                <span class="absolute bottom-2.5 left-2.5 bg-green-900/90 text-white text-[11px] font-bold px-2 py-0.5 rounded">
-                  ${product.pv}
-                </span>
-              </div>
-              <div class="p-4">
-                <h3 class="font-extrabold text-base text-gray-900 mb-1">${product.name}</h3>
-                <p class="text-xs text-gray-600 leading-relaxed">${product.desc}</p>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 flex items-center justify-between border-t border-gray-50 mt-2">
-              <div>
-                <span class="text-lg font-black dxn-text-green">${product.price}</span>
-                <span class="text-xs font-bold text-gray-500">${STORE_CONFIG.currency}</span>
-              </div>
-              <button onclick="addToCart(${product.id})" class="no-print dxn-green dxn-green-hover text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
-                <span>+ أضف للسلة</span>
-              </button>
-            </div>
-          </div>
-        `).join("")}
-      </div>
-    </main>
-
-    <!-- نافذة السلة الجانبية (Modal) -->
-    ${state.isCartOpen ? `
-      <div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-end no-print">
-        <div class="bg-white w-full max-w-md h-full flex flex-col justify-between shadow-2xl">
-          <div class="p-4 border-b flex items-center justify-between bg-green-50">
-            <h3 class="font-black text-lg text-green-950">🛒 سلة المشتريات (${totalItems})</h3>
-            <button onclick="state.isCartOpen = false; render();" class="w-8 h-8 rounded-full bg-white text-gray-600 hover:text-red-600 font-bold">✕</button>
-          </div>
-
-          <div class="flex-1 overflow-y-auto p-4 space-y-4">
-            ${state.cart.length === 0 ? `
-              <div class="text-center py-12 text-gray-400">
-                <p class="text-4xl mb-2">🛍️</p>
-                <p class="font-bold">سلتك فارغة حالياً</p>
-              </div>
-            ` : state.cart.map(item => `
-              <div class="flex items-center justify-between gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                <div class="flex-1">
-                  <h4 class="font-bold text-sm text-gray-900">${item.name}</h4>
-                  <p class="text-xs text-green-800 font-bold">${item.price * item.qty} ${STORE_CONFIG.currency}</p>
-                </div>
-                <div class="flex items-center gap-2 bg-white border rounded-lg px-2 py-1">
-                  <button onclick="updateQty(${item.id}, -1)" class="text-red-600 font-black px-1">-</button>
-                  <span class="text-sm font-bold w-5 text-center">${item.qty}</span>
-                  <button onclick="updateQty(${item.id}, 1)" class="text-green-700 font-black px-1">+</button>
-                </div>
-              </div>
-            `).join("")}
-
-            ${state.cart.length > 0 ? `
-              <div class="border-t pt-4 space-y-3">
-                <h4 class="font-extrabold text-sm text-gray-800">بيانات التوصيل والدفع:</h4>
-                <input type="text" placeholder="الاسم الكريم" value="${state.customerName}" oninput="state.customerName = this.value"
-                  class="w-full border rounded-xl px-3 py-2 text-sm" />
-                <input type="tel" placeholder="رقم الهاتف / الواتساب" value="${state.customerPhone}" oninput="state.customerPhone = this.value"
-                  class="w-full border rounded-xl px-3 py-2 text-sm" />
-                <input type="text" placeholder="الحي / المدينة" value="${state.customerCity}" oninput="state.customerCity = this.value"
-                  class="w-full border rounded-xl px-3 py-2 text-sm" />
-                <select onchange="state.paymentMethod = this.value" class="w-full border rounded-xl px-3 py-2 text-sm bg-white">
-                  ${STORE_CONFIG.paymentMethods.map(m => `<option value="${m}" ${state.paymentMethod === m ? 'selected' : ''}>${m}</option>`).join("")}
-                </select>
-              </div>
-            ` : ""}
-          </div>
-
-          <div class="p-4 border-t bg-gray-50 space-y-3">
-            <div class="flex items-center justify-between font-black text-base">
-              <span>الإجمالي:</span>
-              <span class="dxn-text-green text-xl">${totalPrice} ${STORE_CONFIG.currency}</span>
-            </div>
-            <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white py-3 rounded-xl font-extrabold text-sm shadow transition flex items-center justify-center gap-2">
-              📲 إتمام الطلب عبر واتساب
-            </button>
-          </div>
-        </div>
-      </div>
-    ` : ""}
-
-    <!-- التذييل (Footer) -->
-    <footer class="bg-green-950 text-green-100 py-6 px-4 text-center text-xs space-y-2 mt-12">
-      <p class="font-bold text-sm text-white">${STORE_CONFIG.storeName} — ${STORE_CONFIG.subTitle}</p>
-      <p>للاستفسار والطلبات: ${STORE_CONFIG.displayPhone} | رقم العضوية: ${STORE_CONFIG.memberId}</p>
-    </footer>
-  `;
-}
-
-// تشغيل التطبيق عند التحميل
-render();
+  renderFilters();
+  renderProducts();
+  updateCartUI();
 </script>
 </body>
 </html>
